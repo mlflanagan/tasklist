@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta charset="utf-8">
+<title>Task List</title>
+<style>
+#container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#task-form {
+    margin: .5em 0;
+    text-align: center;
+}
+
+#task-input {
+    border: 2px solid #666;
+    width: 25em;
+    margin: 2em .5em;
+    padding: .5em 1em;
+    font-size: x-large;
+    /* background-color: #cccbc6;  /* eee */
+}
+
+#task-submit {
+    border: 2px solid #666;
+    box-shadow: none;
+    background-color: #fff;  /* a9b7c0, cccbc6 */
+    padding: .5em 1em;
+    font-size: x-large;
+}
+
+#task-submit:hover {
+    background-color: #eee;
+}
+
+#task-list {
+    margin: 0 auto;
+}
+
+.task-list-item {
+    list-style: none;
+    padding-left: 0;
+}
+
+.task-text {
+    display: inline-block;
+    width: 90%;
+    margin-bottom: 1em;
+    border: 2px solid #666;
+    border-radius: .5em;
+    padding: .5em .5em;
+    font-size: xx-large;
+    font-family: sans;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.task-list-item a {
+    display: inline-block;
+    float: right;
+    width: 36px;
+    height: 36px;
+    margin-top: 8px;  /* align image vertically */
+    background: url('outline_delete_outline_black_18dp.png');
+}
+</style>
+<script src="script.js"></script>
+</head>
+<body>
+<div id="container">
+    <form id="task-form" onsubmit="return false;">
+        <input id="task-input" type="text" placeholder="Enter new task here">
+        <input id="task-submit" type="submit" value="Add Task">
+    </form>
+    <ul id="task-list"></ul>
+</div>
+</body>
+</html>
