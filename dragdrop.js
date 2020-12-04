@@ -1,6 +1,6 @@
 'use strict';
 
-var dragSourceElement = null;
+var draggedItem = null;
 
 function swap(elem1, elem2) {
     var temp = elem1.nextElementSibling;
@@ -12,39 +12,50 @@ function swap(elem1, elem2) {
 }
 
 function handleDragStart(e) {
-    this.style.opacity = '0.4';
-    dragSourceElement = this;
+    draggedItem = this;
+    draggedItem.classList.add('dragging');
 }
 
 function handleDragOver(e) {
-    if (e.preventDefault) {
-        e.preventDefault();
-    }
+    e.preventDefault();
     return false;
 }
 
 function handleDragEnter(e) {
-    this.classList.add('over');
+    /* 1. Do not highlight dragged item as target
+       2. Only highlight target if over div element, not li element
+    */
+    if (e.target.tagName === "DIV") {
+        if (e.target.parentElement !== draggedItem) {
+            e.target.classList.add('target');
+        }
+    }
 }
 
 function handleDragLeave(e) {
-    this.classList.remove('over');
+    if (e.target.tagName === "DIV") {
+        /* Do not remove highlight when dragging over target div children.
+           - e.target is the div we are leaving
+           - e.relatedTarget is the div child element we are entering
+        */
+        if (!e.target.contains(e.relatedTarget)) {
+            e.target.classList.remove('target');
+        }
+    }
 }
 
 function handleDrop(e) {
     e.stopPropagation();
-    if (dragSourceElement !== this) {
-        swap(dragSourceElement, this);
+    if (draggedItem !== this) {
+        swap(draggedItem, this);
         saveTasks();
     }
+    e.target.classList.remove('target');
     return false;
 }
 
 function handleDragEnd(e) {
-    var items = document.getElementById('task-list').getElementsByTagName("li");
-    this.style.opacity = '1';
-    for (var i=0 ; i<items.length ; i++) {
-        items[i].classList.remove('over');
-    };
+    draggedItem.classList.remove('dragging');
+    draggedItem = null;
 }
 

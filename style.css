@@ -1,5 +1,5 @@
 html, body {
-    background-color: #eee; /* #463f3a;  /* #264653; */
+    background-color: #eee;
 }
 
 #container {
@@ -8,29 +8,38 @@ html, body {
 }
 
 #task-form {
-    margin: .5em 0;
+    margin: 1em 0;
     text-align: center;
 }
 
 #task-input {
-    width: 25em;
-    margin: 2em .5em;
+    width: 50%;
+    margin: 0 .5em;
     border: 2px solid #000;
     padding: .5em 1em;
     background-color: #eee;
     font-size: x-large;
+}
+
+#task-input:focus {
+    outline: none;
 }
 
 #task-submit {
     border: 2px solid #000;
     box-shadow: none;
     padding: .5em 1em;
-    background-color: #8A817C;  /* #2a9d8f;  /* #eee; */
+    background-color: #8a817c;
     font-size: x-large;
 }
 
 #task-submit:hover {
     background-color: #eee;
+}
+
+#task-submit:focus {
+    background-color: #eee;
+    outline: none;
 }
 
 #task-list {
@@ -39,23 +48,18 @@ html, body {
 
 .task-list-item {
     list-style: none;
+    margin-bottom: 1em;
     padding-left: 0;
     cursor: move;
 }
 
-/* TODO: Not working
-.task-text .over {
-    border: 2px solid red;
-} */
-
 .task-text {
     display: inline-block;
-    width: 90%;
-    margin-bottom: 1em;
+    width: 85%;
     border: 2px solid #000;
     border-radius: .5em;
     padding: .5em .5em;
-    background-color: #bcb8b1;  /* #e9c46a; */
+    background-color: #bcb8b1;
     font-size: xx-large;
     font-family: sans;
     color: #333;
@@ -69,8 +73,16 @@ html, body {
     float: right;
     width: 36px;
     height: 36px;
-    margin-top: 8px;  /* align image vertically */
+    margin-top: 10px;  /* align image vertically */
     background: url('outline_delete_outline_black_18dp.png');
     cursor: pointer;
+}
+
+div.target {
+    border: 2px dashed #000;
+}
+
+.dragging {
+    opacity = '0.2';
 }
 

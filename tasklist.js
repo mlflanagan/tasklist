@@ -9,7 +9,6 @@ function addTask(taskText) {
 
     li.setAttribute('draggable', true);
     li.classList.add('task-list-item');
-    li.setAttribute('draggable', true);
 
     div.appendChild(document.createTextNode(taskText));
     div.classList.add('task-text');
@@ -59,6 +58,10 @@ function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(taskArr));
 }
 
+function setFocusToInput(){
+    document.getElementById("task-input").focus();
+}
+
 window.addEventListener('DOMContentLoaded', function () {
     form = document.getElementById("task-form");
     ul = document.getElementById("task-list");
@@ -72,11 +75,14 @@ window.addEventListener('DOMContentLoaded', function () {
 
     form.addEventListener('submit', function () {
         var input = document.getElementById("task-input");
-        if (input.value !== '') {
+        if (input.value === '') {
+            window.alert("Please enter a task");
+        } else {
             addTask(input.value);
             saveTasks();
             input.value = '';
         }
+        setFocusToInput();
     });
 
     /* not needed any more since we now save on every add and delete
@@ -84,6 +90,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // load saved tasks, if any
     loadTasks();
+    setFocusToInput();
 
     // for testing and debugging only
     // localStorage.removeItem("tasks");
