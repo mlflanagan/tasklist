@@ -1,5 +1,6 @@
 html, body {
     background-color: #eee;
+    font-family: Verdana, Arial, sans;
 }
 
 #container {
@@ -61,7 +62,6 @@ html, body {
     padding: .5em .5em;
     background-color: #bcb8b1;
     font-size: xx-large;
-    font-family: sans;
     color: #333;
     vertical-align: middle;
     white-space: nowrap;
